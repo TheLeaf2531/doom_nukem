@@ -20,8 +20,8 @@ CFLAG = $(FLAGS) -I$(PATH_INC) -I$(PATH_LIB)/$(PATH_INC) $(SDL_HDR_PATH)
 FAST_FLAG = -O3 -march=native -flto
 SLOW_FLAG = #-fsanitize=address -g3 -O0
 
-HIDDEN_FLAGS = -v
-NAZI_FLAG = -Weverything
+HIDDEN_FLAGS = #-v
+NAZI_FLAG = -Wall -Wextra -Werror #-Weverything
 
 #==============================================================================#
 #                                   Paths                                      #
@@ -68,8 +68,13 @@ DEPENDECIES = make -C $(PATH_LIB) $(INSTRUCTION) HIDDEN_FLAGS=$(HIDDEN_FLAGS);\
 DEP = -L $(PATH_LIB) -lft $(SDL_LIB_PATH)									\
 
 SRC =	main.c																\
+		game_loop.c															\
+		environment.c														\
+		event.c																\
 
 INC =	libft.h																\
+		math_types.h														\
+		types.h																\
 		doom_nukem.h														\
 
 

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 16:29:24 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 20:01:53 by vboissel         ###   ########.fr       */
+/*   Created: 2019/04/08 18:34:31 by vboissel          #+#    #+#             */
+/*   Updated: 2019/04/08 20:05:12 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
 
-static t_ray			create_ray(t_vector2d start, t_vector2d direction,
-							int		sector_start)
+static void		keyboard_event(t_environment *e, SDL_Event ev)
 {
-	t_ray		ray;
-
-	ray.pos = start;
-	ray.dir = direction;
-	ray.curr_sector = sector_start;
-	return (ray);
+	if (ev.type == SDL_KEYUP)
+	{
+		if (ev.key.keysym.sym == SDLK_ESCAPE)
+			e->state = QUIT;
+	}
 }
 
-t_hit					*raycast(t_ray ray, int	flags)
+void			update_event(t_environment *e)
 {
+	SDL_Event	ev;
+
+	while (SDL_PollEvent(&ev))
+	{
+		if (ev.type == SDL_KEYDOWN || ev.type == SDL_KEYUP)
+			keyboard_event(e, ev);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:30:20 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/03 16:35:00 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:30:38 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct		s_vector3i
 	int			x;
 	int			y;
 	int			z;
-}					t_vector2i;
+}					t_vector3i;
 
 typedef struct		s_vector3f
 {

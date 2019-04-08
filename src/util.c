@@ -1,28 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 16:29:24 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 20:01:53 by vboissel         ###   ########.fr       */
+/*   Created: 2019/04/08 17:22:23 by vboissel          #+#    #+#             */
+/*   Updated: 2019/04/08 17:25:35 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
-
-static t_ray			create_ray(t_vector2d start, t_vector2d direction,
-							int		sector_start)
-{
-	t_ray		ray;
-
-	ray.pos = start;
-	ray.dir = direction;
-	ray.curr_sector = sector_start;
-	return (ray);
-}
-
-t_hit					*raycast(t_ray ray, int	flags)
-{
-}

@@ -6,13 +6,13 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:10:27 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/03 20:18:32 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/04 18:25:06 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
 
-void		free_hit_list(t_hit		start)
+void		free_hit_list(t_hit	*start)
 {
 	t_hit	*next;
 
@@ -33,7 +33,7 @@ t_hit		*init_hit(t_hit		*previous_hit)
 	if (previous_hit)
 	{
 		previous_hit->next = hit;
-		hit->previous = previous_hit;
+		hit->prev = previous_hit;
 	}
 	return (hit);
 }
