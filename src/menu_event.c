@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   menu_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 13:13:19 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/09 16:44:29 by vboissel         ###   ########.fr       */
+/*   Created: 2019/04/09 17:46:07 by vboissel          #+#    #+#             */
+/*   Updated: 2019/04/09 17:47:28 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
 
-int			main(void)
+static void		keyboard_event(t_environment *e, SDL_Event ev)
 {
-	t_environment	*env;
+	if (ev.type == SDL_KEYUP)
+	{
+		if (ev.key.keysym.sym == SDLK_ESCAPE)
+			e->state = QUIT;
+	}
+}
 
-	if (!(env = init_environment((t_vector2i){(int)WIDTH, (int)HEIGHT})))
-		return (0);
-	printf ("ini ok\n");
-	game_loop(env);
-	return (0);
+void			update_event_menu(t_environment *e)
+{
+	SDL_Event	ev;
+
+	while (SDL_PollEvent(&ev))
+	{
+		if (ev.type == SDL_KEYDOWN || ev.type == SDL_KEYUP)
+			keyboard_event(e, ev);
+		if (ev.type == SDL_QUIT)
+			e->state = QUIT;
+		//Menu events :
+	}
 }

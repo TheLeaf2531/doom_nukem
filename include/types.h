@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:33:07 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 18:31:32 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/09 21:05:25 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,25 @@ typedef enum		e_gamestate
 		QUIT
 }					t_gamestate;
 
+typedef struct		s_window_event
+{
+	int				size_changed;
+}					t_window_event;
+
+typedef struct		s_time
+{
+	Uint32		s;
+	Uint32		e;
+	float		delta_time;
+}					t_time;
+
 typedef struct		s_environment
 {
 	t_gamestate		state;
 	SDL_Window		*window;
+	t_window_event	win_ev;
 	SDL_Renderer	*renderer;
+	t_time			time;
 }					t_environment;
 
 #endif

@@ -6,11 +6,17 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:18:55 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 18:25:52 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:58:23 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
+
+
+void						set_window_size(SDL_Window *w, t_vector2i size)
+{
+	SDL_SetWindowSize(w, size.x, size.y);
+}
 
 static SDL_Window			*create_window(t_vector2i size)
 {
@@ -25,7 +31,7 @@ static SDL_Window			*create_window(t_vector2i size)
 					SDL_WINDOWPOS_CENTERED,
 					size.x,
 					size.y,
-					SDL_WINDOW_SHOWN)))
+					SDL_WINDOW_RESIZABLE)))
 	{
 		perror(SDL_GetError());
 		return (NULL);
@@ -50,6 +56,12 @@ static SDL_Renderer			*create_renderer(SDL_Window *window)
 	return (renderer);
 }
 
+static void					set_environnement_variables(t_environment **e)
+{
+	(*e)->win_ev.size_changed = 0;
+	(*e)->state = RUNNING;
+}
+
 t_environment				*init_environment(t_vector2i window_size)
 {
 	t_environment	*env;
@@ -60,6 +72,6 @@ t_environment				*init_environment(t_vector2i window_size)
 		return (NULL);
 	if (!(env->renderer = create_renderer(env->window)))
 		return (NULL);
-	env->state = RUNNING;
+	set_environnement_variables(&env);
 	return (env);
 }

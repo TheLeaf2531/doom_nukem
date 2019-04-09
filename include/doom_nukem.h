@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 13:11:48 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 20:04:20 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:27:04 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@
 
 t_environment			*init_environment(t_vector2i window_size);
 int						game_loop(t_environment *e);
-void					update_event(t_environment *e);
+void					update_event_ingame(t_environment *e);
+void					update_event_menu(t_environment *e);
+void					set_window_size(SDL_Window *w, t_vector2i size);
+int						render_frame(t_environment *e);
+SDL_Texture				*resize_texture(t_environment *e, SDL_Texture **tex);
+SDL_Texture				*create_texture(t_environment *e, SDL_Texture **tex);
+SDL_Texture				*get_fsdl_texture(t_environment	*e, SDL_Texture **tex);
+SDL_Texture				*fill_texture(SDL_Texture **tex, Uint32 c);
+
 
 #endif

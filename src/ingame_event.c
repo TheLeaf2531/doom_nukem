@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   ingame_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 18:34:31 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 20:05:12 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:09:52 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		keyboard_event(t_environment *e, SDL_Event ev)
 	}
 }
 
-void			update_event(t_environment *e)
+void			update_event_ingame(t_environment *e)
 {
 	SDL_Event	ev;
 
@@ -29,5 +29,7 @@ void			update_event(t_environment *e)
 	{
 		if (ev.type == SDL_KEYDOWN || ev.type == SDL_KEYUP)
 			keyboard_event(e, ev);
+		if (ev.type == SDL_QUIT)
+			e->state = QUIT;
 	}
 }

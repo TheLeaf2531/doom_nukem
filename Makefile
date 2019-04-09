@@ -70,7 +70,11 @@ DEP = -L $(PATH_LIB) -lft $(SDL_LIB_PATH)									\
 SRC =	main.c																\
 		game_loop.c															\
 		environment.c														\
-		event.c																\
+		ingame_event.c														\
+		menu_event.c														\
+		renderer.c															\
+		texture.c															\
+
 
 INC =	libft.h																\
 		math_types.h														\
