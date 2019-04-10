@@ -74,6 +74,10 @@ SRC =	main.c																\
 		menu_event.c														\
 		renderer.c															\
 		texture.c															\
+		file_checker.c														\
+		file_parser.c														\
+		file_reader.c														\
+		util.c																\
 
 
 INC =	libft.h																\

@@ -6,8 +6,22 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:22:23 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/08 17:25:35 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/10 18:44:34 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
+
+int			elem_nbrs(char const *s, char c)
+{
+	int	n;
+
+	n = 0;
+	while (*s)
+	{
+		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
+			n++;
+		s++;
+	}
+	return (n);
+}

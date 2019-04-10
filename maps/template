@@ -1,0 +1,19 @@
+LEVEL FILE :
+
+Textures
+3	T|(int)texture_id|(char*)file_name
+Skybox
+5	K|(int)texture_id_n|(int)texture_id_w|(int)texture_id_s|(int)texture_id_e
+Sectors
+4	S|(int)sector_id|(double)ceiling_height|(double)floor_height
+	Walls
+9		W|(double)coord_start.x|(double)coord_start.y|(double)coord_end.x|(double)coord_end_y|(int)collide|(int)is_gate|(int)is_window|(int)texture_id
+	Sprites
+9		R|(double)coord_start.x|(double)coord_start.y|(double)coord_end.x|(double)coord_end_y|(double)height|(int)collide|(int)action|(int)texture_id
+Gates
+	G|(int)sector_in|(int)wall_number_in|(int)sector_out|(int)wall_number_out
+Ennemies Info
+6	E|(int)c_sector|(double)coord.x|(double)coord.y|(double)size.w|(double)size.h|(int)life_points|(int)texture_id
+Player info
+7	P|(int)c_sector|(double)coord.x|(double)coord.y|(int)life_points|(double)walking_speed|(double)running_speed
+
