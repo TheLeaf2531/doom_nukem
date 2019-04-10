@@ -6,12 +6,11 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:18:55 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/09 18:58:23 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/11 00:54:21 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
-
 
 void						set_window_size(SDL_Window *w, t_vector2i size)
 {

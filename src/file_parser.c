@@ -6,13 +6,13 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:26:16 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/10 21:14:12 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/11 00:55:11 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
 
-static int		check_level_name(char *str)
+static int				check_level_name(char *str)
 {
 	int		elems;
 	char	**tab;
@@ -48,7 +48,7 @@ static t_level			*generate_level(t_mapfile *mapfile)
 		line = get_line_elem(mapfile->list, i);
 		while (y < line->fields_nbr)
 		{
-			printf ("%s ", line->fields[y]);
+			printf("%s ", line->fields[y]);
 			y++;
 		}
 		printf("\n");
@@ -57,7 +57,7 @@ static t_level			*generate_level(t_mapfile *mapfile)
 	return (NULL);
 }
 
-t_level			*load_level(char *str)
+t_level					*load_level(char *str)
 {
 	t_mapfile	*mapfile;
 	t_level		*level;

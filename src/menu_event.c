@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:46:07 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/09 17:47:28 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/11 00:57:25 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ void			update_event_menu(t_environment *e)
 			keyboard_event(e, ev);
 		if (ev.type == SDL_QUIT)
 			e->state = QUIT;
-		//Menu events :
 	}
 }
