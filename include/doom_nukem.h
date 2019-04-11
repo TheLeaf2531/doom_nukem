@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 13:11:48 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/10 21:19:45 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:16:17 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define FIELD_GATE    5
 # define FIELD_ENNEMI  6
 # define FIELD_PLAYER  7
+# define FIELD_ACTION  0
 
 t_environment			*init_environment(t_vector2i window_size);
 int						game_loop(t_environment *e);
