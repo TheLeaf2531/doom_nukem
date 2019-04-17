@@ -7,6 +7,7 @@ Textures
 Weapon
 	Q
 		(int)weapons_id
+		(float)damage
 		(float)anime_duration
 		(char*)texture_object
 		(char*)texture_idle
@@ -14,11 +15,10 @@ Weapon
 		(char*)texture_shooting_2
 		(char*)texture_shooting_3
 Key
-[3]	K
+[3]	C
 		(int)key_id
-		(int)key_hud_texture
-		(int)key_object_texture
-
+		(char*)key_hud_texture
+		(char*)key_object_texture
 Skybox
 [4]	K
 		(int)texture_id_n
@@ -39,6 +39,7 @@ Sectors
 						(double)coord_end_y
 						(int)collider				[0||1]
 						(int)is_gate				[0||1]
+						(int)is_closed				[0||1]
 						(int)is_window				[0||1]
 						(int)texture_id
 						(int)texture_id_closed
@@ -48,10 +49,23 @@ Sectors
 						(double)coord_start.y
 						(double)coord_end_x
 						(double)coord_end_y
+						(double)height
 						(int)texture_id
 						(int)texture_used
 						(int)collider				[0||1]
-						(int)is_window				[0||1]						
+						(int)is_window				[0||1]
+						(int)action				
+				Gates
+			[2]		G
+						(int)wall
+						(int)gate_exit_sector		
+						(int)gate_exit_id
+				Zones
+					Z
+						(double)coord_x
+						(double)coord_y
+						(double)radius
+						(int)action
 				Objects
 			[6]		O
 						(double)coord_x
@@ -60,11 +74,6 @@ Sectors
 						(int)object_id				[0;100]
 						(double)object_size.w		[0.2;1]
 						(double)object_size.h		[0.2;1]
-
-				Gates
-			[2]		G
-						(int)gate_exit_sector		
-						(int)gate_exit_id
 				Ennemies
 			[6]		N
 						(double)coord.x
@@ -85,20 +94,46 @@ Player info
 Action info
 	A
 		(int)action_type								[1:stand;2:interact]
-		(int)target_type
 		(int)sector_target
-		(int)id_target
-	A|
-Events info
-	E
-		(int)event_type
-		(int)target_type
+		(int)wall_target
+Time events info
+	X
+		(int)ticks							
 
-Types actions :
-	1 : door_interuptor
-	2 : door_plate
 
-Types events :
-	1 : time_limite_event
-	2 : cleared_sector_event
-	3 : key_object_event
+				-----------------------------------------------------------------------------------------
+										Types actions :
+															1 : door_interuptor
+															2 : door_plate
+
+														Types events :
+															1 : time_limite_event
+															2 : cleared_sector_event
+															3 : key_object_event
+
+Repere local aux secteurs ? nope
+
+
+.		.GGGGGG.				.
+
+
+
+								.
+
+
+
+
+.					.
+
+
+
+.			.
+
+.GGGGGG.	.
+
+
+G1 : space [0;0][7;7]
+	[3:7][4;7]
+G2 : space [0;0][7;7]
+	[0;0][1;0]
+[0.2][0] =>

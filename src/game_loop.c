@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:02:22 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/11 17:15:51 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:49:10 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			game_loop(t_environment *e)
 		}
 		e->time.e = SDL_GetTicks();
 		e->time.delta_time = (float)(e->time.e - e->time.s) / 1000.0F;
-		printf("DeltaTime : %f\n", e->time.delta_time);
+		//printf("DeltaTime : %f\n", e->time.delta_time);
 	}
 	return (1);
 }

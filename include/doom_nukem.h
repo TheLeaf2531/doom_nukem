@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 13:11:48 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/11 17:16:17 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/17 19:16:41 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,20 @@
 # define FILE_EXTENSION "dnmap"
 
 # define FIELD_TEXTURE 3
+# define FIELD_WEAPON  9
+# define FIELD_KEY	   4
 # define FIELD_SKYBOX  5
 # define FIELD_SECTOR  4
-# define FIELD_WALL    9
-# define FIELD_SPRITE  9
-# define FIELD_GATE    5
+# define FIELD_WALL    11
+# define FIELD_SPRITE  11
+# define FIELD_GATE    4
+# define FIELD_ZONE    4
+# define FIELD_OBJECT  6
 # define FIELD_ENNEMI  6
 # define FIELD_PLAYER  7
-# define FIELD_ACTION  0
+# define FIELD_ACTION  3
+# define FIELD_TEVENTS 3
+# define FIELD_END	   1
 
 t_environment			*init_environment(t_vector2i window_size);
 int						game_loop(t_environment *e);
@@ -61,6 +67,16 @@ t_map_line				*get_line_elem(t_map_line *start, int i);
 void					free_map_file(t_mapfile *map);
 int						check_file_fields(t_mapfile *map);
 t_level					*load_level(char *str);
+int						count_sectors(t_mapfile	*file);
+int						count_walls(t_map_line *f_l);
+int						allocate_sectors(t_level *level, t_mapfile *file);
+int						count_gates(t_map_line *f_l);
+void					printf_level(t_level *level);
+int						fill_level(t_level *level, t_mapfile *file);
+t_hit					*init_hit(t_hit *previous_hit);
+void					free_hit_list(t_hit *start);
+
+
 
 
 #endif

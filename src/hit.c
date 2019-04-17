@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:10:27 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/11 00:56:51 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:26:59 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,28 @@ void		free_hit_list(t_hit *start)
 		next = start->next;
 		free(start);
 		start = next;
+	}
+}
+
+void		add_hit(t_hit *hitlist, t_hit *new_hit)
+{
+	t_hit	*tmp;
+	int		searching;
+
+	tmp = hitlist;
+	searching = 1;
+	while (tmp && searching)
+	{
+		if (tmp->distance < new_hit->distance)
+		{
+			tmp->prev->next = new_hit;
+			new_hit->prev = tmp->prev;
+			new_hit->next = new_hit->prev->next;
+			new_hit->next->prev = new_hit;
+			new_hit->prev->next = new_hit;
+			searching = 0;
+		}
+		tmp = tmp->next;
 	}
 }
 

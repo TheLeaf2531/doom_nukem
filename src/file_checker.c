@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:15:05 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/10 20:59:28 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:49:59 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,19 @@ static int	check_field(char t, int fields)
 		return (0);
 	else if (t == 'W' && fields != FIELD_WALL)
 		return (0);
-	else if (t == 'R' && fields != FIELD_SPRITE)
+	else if (t == 'I' && fields != FIELD_SPRITE)
 		return (0);
 	else if (t == 'G' && fields != FIELD_GATE)
 		return (0);
-	else if (t == 'E' && fields != FIELD_ENNEMI)
+	else if (t == 'N' && fields != FIELD_ENNEMI)
 		return (0);
 	else if (t == 'P' && fields != FIELD_PLAYER)
+		return (0);
+	else if (t == 'Q' && fields != FIELD_WEAPON)
+		return (0);
+	else if (t == 'C' && fields != FIELD_KEY)
+		return (0);
+	else if (t == 'E' && fields != FIELD_END)
 		return (0);
 	return (1);
 }
@@ -44,8 +50,9 @@ int			check_file_fields(t_mapfile *map)
 	{
 		if (tmp->fields && tmp->fields[0])
 		{
-			if (!(check_field(tmp->fields[0][0], tmp->fields_nbr)))
-				return (0);
+			if (tmp->fields_nbr > 1 
+				&& !(check_field(tmp->fields[0][0], tmp->fields_nbr)))
+					return (0);
 		}
 		else
 			return (0);

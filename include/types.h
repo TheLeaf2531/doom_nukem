@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:33:07 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/10 21:05:48 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/17 19:53:16 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,14 @@ typedef struct		s_wall
 	t_vector3d		equ;
 	int				type;
 	int				texture_id;
+	int				close_texture_id;
+	int				collider;
+	int				is_gate;
+	int				is_closed;
+	int				is_window;
 	void			*gate;
-	void			*sector;
+	struct s_sector	*sector;
 }					t_wall;
-
-typedef struct		s_sector
-{
-	int				id;
-	t_wall			**wall;
-	double			floor;
-	double			ceil;
-}					t_sector;
 
 typedef	struct		s_gate
 {
@@ -74,6 +71,17 @@ typedef	struct		s_gate
 	int				sector_1;
 	int				sector_2;
 }					t_gate;
+
+typedef struct		s_sector
+{
+	int				id;
+	int				walls;
+	int				gates;
+	t_wall			**wall;
+	t_gate			**gate;
+	double			floor;
+	double			ceil;
+}					t_sector;
 
 typedef struct			s_texture
 {
@@ -90,7 +98,6 @@ typedef struct		s_level
 	int				sectors;
 	t_sector		**sector;
 	int				gates;
-	t_gate			**gate;
 }					t_level;
 
 typedef struct		s_hit
@@ -98,6 +105,7 @@ typedef struct		s_hit
 	t_vector2d		pos;
 	t_sector		*sector;
 	int				type;
+	double			distance;
 	void			*target;
 	struct s_hit	*next;
 	struct s_hit	*prev;
@@ -118,6 +126,7 @@ typedef struct		s_ray
 	t_vector2d		dir;
 	int				curr_sector;
 	int				flags;
+	int				max_dist;
 }					t_ray;
 
 typedef enum		e_gamestate

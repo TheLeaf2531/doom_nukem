@@ -77,6 +77,10 @@ SRC =	main.c																\
 		file_checker.c														\
 		file_parser.c														\
 		file_reader.c														\
+		file_info.c \
+		display_stuff.c\
+		fill_level.c\
+		sector_init.c\
 		util.c																\
 
 

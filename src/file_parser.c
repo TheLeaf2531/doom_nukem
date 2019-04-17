@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:26:16 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/11 00:55:11 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:50:08 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,47 @@ static int				check_level_name(char *str)
 	return (1);
 }
 
+static int				fill_sectors(t_mapfile *mapfile, t_level *level)
+{
+	t_map_line		*line;
+	int				s;
+
+	line = mapfile->list;
+	s = 0;
+	while (line)
+	{
+		if (line->fields[0][0] == 'S')
+		{
+			level->sector[s]->id = ft_atoi(line->fields[1]);
+			if (level->sector[s]->id != s)
+				return (0);
+			level->sector[s]->ceil = ft_atof(line->fields[2]);
+			level->sector[s]->ceil = ft_atof(line->fields[3]);
+			s++;
+		}
+		line = line->next;
+	}
+	return (1);
+}
+
 static t_level			*generate_level(t_mapfile *mapfile)
 {
-	t_map_line	*line;
-	int			i;
-	int			y;
+	t_level		*level;
 
-	i = 0;
-	while (i <= mapfile->line_number)
-	{
-		y = 0;
-		line = get_line_elem(mapfile->list, i);
-		while (y < line->fields_nbr)
-		{
-			printf("%s ", line->fields[y]);
-			y++;
-		}
-		printf("\n");
-		i++;
-	}
-	return (NULL);
+	if (!(level = ft_memalloc(sizeof(t_level))))
+		return (NULL);
+	printf("Do the thing  !\n");
+	if (!(allocate_sectors(level, mapfile)))
+		return (NULL);
+	printf("Do it !\n");	
+	if (!(fill_sectors(mapfile, level)))
+		return (NULL);
+	printf("Do the FUCKING THING !\n");	
+	if (!(fill_level(level, mapfile)))
+		return (NULL);
+	printf("Doooooooooooooo it!\n");	
+	printf_level(level);
+	return (level);	
 }
 
 t_level					*load_level(char *str)
