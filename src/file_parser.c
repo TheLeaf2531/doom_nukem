@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:26:16 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/17 17:50:08 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/19 19:40:31 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,13 @@ static t_level			*generate_level(t_mapfile *mapfile)
 
 	if (!(level = ft_memalloc(sizeof(t_level))))
 		return (NULL);
-	printf("Do the thing  !\n");
 	if (!(allocate_sectors(level, mapfile)))
 		return (NULL);
-	printf("Do it !\n");	
 	if (!(fill_sectors(mapfile, level)))
 		return (NULL);
-	printf("Do the FUCKING THING !\n");	
 	if (!(fill_level(level, mapfile)))
 		return (NULL);
-	printf("Doooooooooooooo it!\n");	
-	printf_level(level);
+	//printf_level(level);
 	return (level);	
 }
 

@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 17:05:29 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/17 17:50:16 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/19 16:01:52 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ static int			fill_gate(t_vector3i swg, t_level *level, t_gate *gate,
 	return (1);
 }
 
-static void			fill_wall(t_wall *wall, t_map_line *line, t_sector *s)
+static void			fill_wall(int id, t_wall *wall, t_map_line *line, t_sector *s)
 {
 	wall->coord[0] = (t_vector2d){(double)ft_atof(line->fields[1]),
 									(double)ft_atof(line->fields[2])};
 	wall->coord[1] = (t_vector2d){(double)ft_atof(line->fields[3]),
 									(double)ft_atof(line->fields[4])};
+	wall->id = id;
 	wall->collider = ft_atoi(line->fields[5]);
 	wall->is_gate = ft_atoi(line->fields[6]);
 	wall->is_closed = ft_atoi(line->fields[7]);
@@ -54,7 +55,7 @@ int					fill_level(t_level *level, t_mapfile *file)
 	{
 		if (line->fields[0][0] == 'W')
 		{
-			fill_wall(level->sector[swg.x]->wall[swg.y], line, level->sector[swg.x]);
+			fill_wall(swg.y, level->sector[swg.x]->wall[swg.y], line, level->sector[swg.x]);
 			swg.y++;
 		}
 		if (line->fields[0][0] == 'G')

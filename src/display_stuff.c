@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:45:32 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/17 17:43:32 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/19 17:36:52 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,15 @@ void		printf_level(t_level *level)
 		}
 		swg.x++;
 	}
+}
+
+void	printf_ray(t_ray ray)
+{
+	printf ("\n				Ray info :\n");
+	printf ("	Position       : {%f, %f}\n", ray.pos.x, ray.pos.y);
+	printf ("	Direction      : {%f, %f}\n", ray.dir.x, ray.dir.y);
+	printf ("	Current sector : %d\n", ray.c_sector);
+	printf ("	Excluded wall  : %d\n", ray.exluded_wall);
+	printf ("	Matrix         : [%f;%f;%f]\n", ray.matrix.x, ray.matrix.y, ray.matrix.z);
+	printf ("	Current flag   : %d\n\n",ray.c_flag);
 }

@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:33:07 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/17 19:53:16 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/20 21:35:07 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@ typedef	struct		s_mapfile
 
 typedef struct		s_player
 {
-	t_vector3d		pos;
+	t_vector2d		pos;
+	double			z;
 	t_vector2d		rot;
+	t_vector2d		plane;
 	float			velocity;
 	void			*cur_sector;
+	int				sec_id;
+	double			dist_plane;
 }					t_player;
 
 typedef struct		s_sprite
@@ -52,7 +56,8 @@ typedef struct		s_sprite
 typedef struct		s_wall
 {
 	t_vector2d		coord[2];
-	t_vector3d		equ;
+	t_vector3d		matrix;
+	int				id;
 	int				type;
 	int				texture_id;
 	int				close_texture_id;
@@ -107,8 +112,7 @@ typedef struct		s_hit
 	int				type;
 	double			distance;
 	void			*target;
-	struct s_hit	*next;
-	struct s_hit	*prev;
+	int				result;
 }					t_hit;
 
 typedef struct		s_ignore
@@ -124,8 +128,11 @@ typedef struct		s_ray
 {
 	t_vector2d		pos;
 	t_vector2d		dir;
-	int				curr_sector;
+	t_vector3d		matrix;
+	int 			exluded_wall;
+	int				c_sector;
 	int				flags;
+	int				c_flag;
 	int				max_dist;
 }					t_ray;
 
@@ -148,6 +155,15 @@ typedef struct		s_time
 	float		delta_time;
 }					t_time;
 
+typedef struct		s_renderer_env
+{
+	t_vector2i	c;
+	t_vector2i	size;
+	Uint32		*p;
+	t_hit		*hit;
+	t_ray		ray;
+}					t_renderer_env;
+
 typedef struct		s_environment
 {
 	t_gamestate		state;
@@ -155,6 +171,8 @@ typedef struct		s_environment
 	t_window_event	win_ev;
 	SDL_Renderer	*renderer;
 	t_time			time;
+	t_level			*level;
+	t_player		player;
 }					t_environment;
 
 #endif

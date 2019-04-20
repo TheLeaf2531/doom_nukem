@@ -6,7 +6,7 @@
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 13:11:48 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/17 19:16:41 by vboissel         ###   ########.fr       */
+/*   Updated: 2019/04/19 21:21:28 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define NO_FLAG          0
 # define RAYCAST_WALLS    1
 # define RAYCAST_GATES    2
-# define RAYCAST_ENNEMIES 4
+# define RAYCAST_SPRITES  4
 # define RAYCAST_WINDOWS  8
 
 # define FILE_EXTENSION "dnmap"
@@ -72,11 +72,17 @@ int						count_walls(t_map_line *f_l);
 int						allocate_sectors(t_level *level, t_mapfile *file);
 int						count_gates(t_map_line *f_l);
 void					printf_level(t_level *level);
+void					printf_ray(t_ray ray);
 int						fill_level(t_level *level, t_mapfile *file);
 t_hit					*init_hit(t_hit *previous_hit);
 void					free_hit_list(t_hit *start);
-
-
-
+void					precalc_static_matrix(t_level *level);
+int						check_wall_intersection(t_ray ray, t_hit *hit, t_wall *w);
+void					cast_ray(t_ray ray, t_hit *hit, t_level *level);
+void					set_ray_direction(t_ray *ray, int origin_sector,
+							t_vector2d origin, t_vector2d dir);
+void					set_ray_options(t_ray *ray, int flags, double maximum_distance);
+t_hit					*get_hit_buffer(t_environment *e, t_hit **hit_buffer);
+void					clear_hit_buffer(int buffer_size, t_hit **hit_buffer);
 
 #endif

@@ -17,7 +17,7 @@ CC = clang
 
 FLAGS = $(HIDDEN_FLAGS) $(NAZI_FLAG) $(FAST_FLAG) $(SLOW_FLAG)
 CFLAG = $(FLAGS) -I$(PATH_INC) -I$(PATH_LIB)/$(PATH_INC) $(SDL_HDR_PATH)
-FAST_FLAG = -O3 -march=native -flto
+FAST_FLAG = #-O3 -march=native -flto
 SLOW_FLAG = #-fsanitize=address -g3 -O0
 
 HIDDEN_FLAGS = #-v
@@ -82,6 +82,11 @@ SRC =	main.c																\
 		fill_level.c\
 		sector_init.c\
 		util.c																\
+		hit.c\
+		ray.c\
+		raycaster.c\
+		raycaster_equ.c\
+		raycaster_intersection.c\
 
 
 INC =	libft.h																\

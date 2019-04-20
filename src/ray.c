@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vboissel <vboissel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 17:02:22 by vboissel          #+#    #+#             */
-/*   Updated: 2019/04/20 17:31:02 by vboissel         ###   ########.fr       */
+/*   Created: 2019/04/18 18:25:34 by vboissel          #+#    #+#             */
+/*   Updated: 2019/04/19 17:30:49 by vboissel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/doom_nukem.h"
 
-int			game_loop(t_environment *e)
+void					set_ray_direction(t_ray *ray, int origin_sector,
+							t_vector2d origin, t_vector2d dir)
 {
-	precalc_static_matrix(e->level);
-	while (e->state != QUIT)
-	{
-		e->time.s = SDL_GetTicks();
-		if (e->state == MENU)
-		{
-		}
-		else if (e->state == RUNNING)
-		{
-			update_event_ingame(e);
-			if (!(render_frame(e)))
-				return (0);
-		}
-		e->time.e = SDL_GetTicks();
-		e->time.delta_time = (float)(e->time.e - e->time.s) / 1000.0F;
-		//printf("DeltaTime : %f\n", e->time.delta_time);
-	}
-	return (1);
+	(*ray).pos = origin;
+	(*ray).exluded_wall = -1;
+	(*ray).dir = dir;
+	(*ray).c_sector = origin_sector;
+}
+
+void					set_ray_options(t_ray *ray, int flags, double maximum_distance)
+{
+	(*ray).flags = flags;
+	(*ray).max_dist = maximum_distance;
 }
